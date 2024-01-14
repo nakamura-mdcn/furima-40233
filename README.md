@@ -29,8 +29,7 @@ has_many :orders
 
 ### Association
 belongs_to :user
-<!-- 33行目は必要か不明 -->
-belongs_to :order 
+has_one :order
 
 
 <!-- ordersテーブル -->
