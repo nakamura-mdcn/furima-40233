@@ -12,12 +12,12 @@
 
 ### Association
 has_many :items
-has_many :orders
+has_many :purchase_history
 
 <!-- itemsテーブル -->
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ----------- |
-| name                   | string      | null: false, foreign_key: true |
+| name                   | string      | null: false                    |
 | information            | text        | null: false                    |
 | category_id            | integer     | null: false                    |
 | sales_status_id        | integer     | null: false                    |
@@ -29,8 +29,7 @@ has_many :orders
 
 ### Association
 belongs_to :user
-has_one :order
-belongs_to :address
+belongs_to :purchase_history
 <!-- 外部キー　別モデルを作成 -->
 belongs_to :prefecture_id
 belongs_to :category_id
@@ -41,25 +40,26 @@ belongs_to :scheduled_delivery_id
 <!-- addressテーブル 住所-->
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ----------- |
-| postal_code     | integer     | null: false                    |
-| prefecture_id   | integer     | null: false                    |
-| city            | string      | null: false                    |
-| addresses       | string      | null: false                    |
-| building        | string      | null: false                    |
-| phone_number    | integer     | null: false                    |
-| item            | references  | null: false, foreign_key: true |
+| postal_code      | string      | null: false                    |
+| prefecture_id    | integer     | null: false                    |
+| city             | string      | null: false                    |
+| addresses        | string      | null: false                    |
+| building         | string      |                                |
+| phone_number     | string      | null: false                    |
+| purchase_history | references  | null: false, foreign_key: true |
 
 ### Association
-belongs_to :prefecture_id
-belongs_to :item
+belongs_to :purchase_history
 
 <!-- purchase_historiesテーブル 購入履歴-->
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ----------- |
-| user | references  | null: false, foreign_key: true |
-| item | references  | null: false, foreign_key: true |
+| user    | references  | null: false, foreign_key: true |
+| address | references  | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
 belongs_to :item
+has_one :address
+
 
