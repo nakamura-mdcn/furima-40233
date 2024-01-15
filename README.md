@@ -12,7 +12,7 @@
 
 ### Association
 has_many :items
-has_many :purchase_history
+has_many :purchase_histories
 
 <!-- itemsテーブル -->
 | Column             | Type   | Options                   |
@@ -29,7 +29,7 @@ has_many :purchase_history
 
 ### Association
 belongs_to :user
-belongs_to :purchase_history
+has_one :purchase_history
 <!-- 外部キー　別モデルを作成 -->
 belongs_to :prefecture_id
 belongs_to :category_id
@@ -37,7 +37,7 @@ belongs_to :sales_status_id
 belongs_to :shipping_fee_status_id
 belongs_to :scheduled_delivery_id
 
-<!-- addressテーブル 住所-->
+<!-- addressesテーブル 住所-->
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ----------- |
 | postal_code      | string      | null: false                    |
@@ -55,11 +55,9 @@ belongs_to :purchase_history
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ----------- |
 | user    | references  | null: false, foreign_key: true |
-| address | references  | null: false, foreign_key: true |
+| item    | references  | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
 belongs_to :item
 has_one :address
-
-
