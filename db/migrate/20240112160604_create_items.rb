@@ -6,9 +6,9 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.string :category
       t.string :sales_status
       t.string :shipping_fee_status
-      t.string :prefecture
+      t.integer :prefecture
       t.string :scheduled_delivery
-      t.string :price
+      t.integer :price
       t.timestamps
     end
   end
