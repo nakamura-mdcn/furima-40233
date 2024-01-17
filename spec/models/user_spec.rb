@@ -57,6 +57,13 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
       end
+      it 'passwordが半角英字のみだと登録できない' do
+        @user.password = 'abcdef'
+        @user.password_confirmation = 'abcdef'
+        @user.valid?
+        binding.pry
+        expect(@user.errors.full_messages).to include("Password is invalid. Include both letters and numbers")
+      end
       it 'first_nameが空だと登録できない' do
         @user.first_name = ''
         @user.valid?
