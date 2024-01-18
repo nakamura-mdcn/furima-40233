@@ -6,5 +6,8 @@ window.addEventListener('turbo:load', () => {
     addTaxDom.innerHTML = Math.floor(inputValue * 0.1);
     const profitDom = document.getElementById("profit");
     profitDom.innerHTML = Math.floor(inputValue * 0.9);
-  })
+
+    const obj = undefined;
+    console.log(obj.name) 
+  });
 });

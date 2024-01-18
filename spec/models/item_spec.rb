@@ -67,6 +67,16 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
+      it '価格が全角数字だと出品できない' do
+        @item.price = '１２３４'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it '価格に小数点以下があると出品できない' do
+        @item.price = 1234.56
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
       it '商品の画像がないと出品できない' do
         @item.image = nil
         @item.valid?
