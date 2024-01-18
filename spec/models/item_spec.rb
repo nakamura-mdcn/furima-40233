@@ -54,7 +54,28 @@ RSpec.describe Item, type: :model do
       end
       it '価格が299円以下だと出品できない' do
         @item.price = 299
-        
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it '価格が1千万円以上だと出品できない' do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it '価格が半角数字以外だと出品できない' do
+        @item.price = 'yamada'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it '商品の画像がないと出品できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+      it 'userが紐付いていないと出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
