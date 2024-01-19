@@ -8,8 +8,7 @@ const price = () => {
     const profitDom = document.getElementById("profit");
     profitDom.innerHTML = Math.floor(inputValue * 0.9);
   });
-  const obj = undefined;
-  console.log(obj.name) 
+  const obj = undefined; 
 };
 window.addEventListener("turbo:load", price);
 window.addEventListener("turbo:render", price);
