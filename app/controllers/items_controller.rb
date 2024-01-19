@@ -1,9 +1,14 @@
 class ItemsController < ApplicationController
+  
   def index
   @items = Item.all
   end
   def new
-    @item = Item.new
+    if current_user
+      @item = Item.new
+    else
+      redirect_to new_user_session_path
+    end
   end
   def create
     @item = Item.new(item_params)
