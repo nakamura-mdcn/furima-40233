@@ -23,9 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.purchase_history.present?
+    #if @item.purchase_history.present?
       redirect_to root_path
-    end
+    #end
   end
 
   def update
@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
