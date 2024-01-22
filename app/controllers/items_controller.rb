@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
-  before_action :move_to_index, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
@@ -23,9 +22,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.purchase_history.present?
+    #if @item.purchase_history.present?
       redirect_to root_path
-    end
+    #end
   end
 
   def update
@@ -44,12 +43,6 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :information, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price, :image).merge(user_id: current_user.id)
-  end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
   end
   def set_item
     @item = Item.find(params[:id])
