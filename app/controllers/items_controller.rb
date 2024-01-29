@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-    else
+      else
       render :new, status: :unprocessable_entity
     end
   end
@@ -22,9 +22,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    #if @item.purchase_history.present?
+    if @item.purchase_history.present?
       redirect_to root_path
-    #end
+    end
   end
 
   def update
