@@ -6,9 +6,6 @@ class PurchaseHistoriesController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_purchase_history = OrderPurchaseHistory.new
-    # if @purchase_history.present?
-    #   redirect_to root_path
-    # end
   end
   def create
     @order_purchase_history = OrderPurchaseHistory.new(purchase_history_params)

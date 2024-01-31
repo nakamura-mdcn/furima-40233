@@ -59,6 +59,16 @@ RSpec.describe OrderPurchaseHistory, type: :model do
         @order_purchase_history.valid?
         expect(@order_purchase_history.errors.full_messages).to include("Phone number is invalid. Input only number")
       end
+      it 'phone_numberが9桁以下だと保存できない' do
+        @order_purchase_history.phone_number = '123456789'
+        @order_purchase_history.valid?
+        expect(@order_purchase_history.errors.full_messages).to include("Phone number is invalid. Input only number")
+      end
+      it 'phone_numberが12桁以上だと保存できない' do
+        @order_purchase_history.phone_number = '123456789012'
+        @order_purchase_history.valid?
+        expect(@order_purchase_history.errors.full_messages).to include("Phone number is invalid. Input only number")
+      end
       it 'item_idに紐づいていないと保存できない' do
         @order_purchase_history.item_id = nil
         @order_purchase_history.valid?
