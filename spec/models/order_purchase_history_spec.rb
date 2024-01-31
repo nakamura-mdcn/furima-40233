@@ -69,11 +69,11 @@ RSpec.describe OrderPurchaseHistory, type: :model do
         @order_purchase_history.valid?
         expect(@order_purchase_history.errors.full_messages).to include("User can't be blank")
       end
-      # it 'order_idに紐づいていないと保存できない' do
-      #   @order_purchase_history.order_id = nil
-      #   @order_purchase_history.valid?
-      #   expect(@order_purchase_history.errors.full_messages).to include("Order can't be blank")
-      # end
+      it 'tokenが空では保存できない' do
+        @order_purchase_history.token = ''
+        @order_purchase_history.valid?
+        expect(@order_purchase_history.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

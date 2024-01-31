@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :purchase_history
+
 end
   # validates :city, presence: true
   # validates :addresses, presence: true

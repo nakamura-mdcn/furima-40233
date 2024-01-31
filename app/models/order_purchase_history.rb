@@ -1,8 +1,9 @@
 class OrderPurchaseHistory
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :addresses, :phone_number, :building
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :addresses, :phone_number, :building, :token
 
   with_options presence: true do
+    validates :token
     validates :user_id
     validates :item_id
     validates :city
