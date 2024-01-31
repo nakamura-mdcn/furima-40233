@@ -30,7 +30,6 @@
       </p>
     </div>
     <%# /支払額の表示 %>
-
   <%= form_with model: @order_purchase_history, url: item_purchase_histories_path(@item), method: :post, id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
     <%# エラー発生時にメッセージが表示%>
     <%= render 'shared/error_messages', model: f.object %>
