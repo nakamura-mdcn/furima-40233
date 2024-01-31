@@ -37,7 +37,7 @@ belongs_to :sales_status_id
 belongs_to :shipping_fee_status_id
 belongs_to :scheduled_delivery_id
 
-<!-- addressesテーブル 住所-->
+<!-- ordersテーブル 住所-->
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ----------- |
 | postal_code      | string      | null: false                    |
@@ -60,4 +60,4 @@ belongs_to :purchase_history
 ### Association
 belongs_to :user
 belongs_to :item
-has_one :address
+has_one :orders
